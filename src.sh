@@ -34,7 +34,7 @@ bg_add () {
     && bd_init ${origin} ${path} \
     && cd ${path} \
     && bd_get_stable \
-    && export ${path_name}="$(basename ${self_dir})/${path_name}" \
+    && export ${path_name}="$(basename ${self_dir})/${!path_name}" \
     && bg_show_hint ${source} ${path_name} \
     )
 }
