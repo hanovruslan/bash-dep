@@ -1,5 +1,7 @@
-*/*
+*
 !origin/*
 !src.sh
 !add.sh-dist
 !add-bgo-sh
+!README.md
+!LICENCE
