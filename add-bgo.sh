@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
+export self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
 
 source "${self_dir}/src.sh"
 source "${self_dir}/origin/bgo/env.sh"
