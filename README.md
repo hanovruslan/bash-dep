@@ -1,20 +1,22 @@
 ## how to include external sh source ##
 
 1. git clone this repo into the root of your project
-1. set up `env.sh`
-1. template `add.sh-dist`
-1. run templated `add.sh-dist`
+1. set up `origin/EXAMPLE-env.sh`
+1. set up `add-EXAMPLE.sh`
+1. run `add-EXAMPLE.sh`
 
-### Set up env.sh ###
+### Set up origin/EXAMPLE-env.sh ###
 
-**bgo_path** - dir name for bash dep
-**bgo_origin** - repository
-**bgo_source** - path to the main source file
+**origin** - repository link, required
+**path** - dir name for bash dep, optional. By default is equal to `EXAMPLE` of your `EAMPLE-env.sh`
+**source** - path to the main source file, optional. By default is equal to `src/src.sh`
 
-Example [origin/bgo/env.sh](origin/bgo/env.sh) 
+Examples:
+* [origin/EXAMPLE-env.sh](origin/EXAMPLE-env.sh) 
+* [origin/EXAMPLE-2-env.sh](origin/EXAMPLE-2-env.sh) 
+* [origin/EXAMPLE-3-env.sh](origin/EXAMPLE-3-env.sh) 
 
-
-### Template add.sh-dist ###
+### Set up add-EXAMPLE.sh ###
 
 file content
 
@@ -24,17 +26,16 @@ file content
 export self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
 
 source "${self_dir}/src.sh"
-source "${self_dir}/origin/EXAMPLE/env.sh"
 
-bg_add "${EXAMPLE_origin}" "${EXAMPLE_path}" "${EXAMPLE_source}" "EXAMPLE_path"
+bg_add "${self_dir}/origin/EXAMPLE-env.sh" 
 
 ```
 
-1. copy `add.sh-dist` into `add-EXAMPLE.sh`
-1. Replace in this file `EXAMPLE` with `your_dep_name`
+1. modify the last line if needed
+1. rename `add-EXAMPLE.sh` into something if needed
 
 
-### run add.sh ###
+### run add-EXAMPLE.sh ###
 
 #### multiple deps ####
 
@@ -42,11 +43,12 @@ You can include more then once line `env.sh` and call for `bg_add` also more the
 
 ```
 
-source "${self_dir}/origin/EXAMPLE/env.sh"
-source "${self_dir}/origin/EXAMPLE_2/env.sh"
-
-bg_add "${EXAMPLE_origin}" "${EXAMPLE_path}" "${EXAMPLE_source}" "EXAMPLE_path"
-bg_add "${EXAMPLE_2_origin}" "${EXAMPLE_2_path}" "${EXAMPLE_2_source}" "EXAMPLE_2_path"
+bg_add "${self_dir}/origin/EXAMPLE-env.sh" 
+bg_add "${self_dir}/origin/EXAMPLE--2-env.sh" 
 
 ```
+
+### WARNING ###
+
+This is bash without any kind of overwrite protection and so on. Be carefull with file names
 
