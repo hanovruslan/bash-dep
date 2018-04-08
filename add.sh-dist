@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-export self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
-
-source "${self_dir}/src.sh"
-source "${self_dir}/origin/EXAMPLE/env.sh"
-
-bg_add "${EXAMPLE_origin}" "${EXAMPLE_path}" "${EXAMPLE_source}" "EXAMPLE_path"
