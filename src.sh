@@ -27,7 +27,7 @@ bg_add () {
     local path="${1}"
     ( \
     source ${path}
-    export path="$(bg_get_path ${path})"
+    export path="dep/$(bg_get_path ${path})"
     export origin # must be in the path
     export source='${self_dir}/'$(basename ${self_dir})/${path}/${source:-"src/src.sh"}
     bg_do_add "${origin}" "${path}" "${source}" \ 

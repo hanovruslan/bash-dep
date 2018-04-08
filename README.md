@@ -1,50 +1,49 @@
 ## how to include external sh source ##
 
-1. git clone this repo into the root of your project
-1. set up `origin/EXAMPLE-env.sh`
-1. set up `add-EXAMPLE.sh`
-1. run `add-EXAMPLE.sh`
+1. git clone this repo into the root of your project into bash-dep subdir by git default
+1. set up `DEP-env.sh` - see the very next section below
+1. run `add.sh`
 
-### Set up origin/EXAMPLE-env.sh ###
+### Set up DEP-env.sh ###
 
-**origin** - repository link, required
-**path** - dir name for bash dep, optional. By default is equal to `EXAMPLE` of your `EAMPLE-env.sh`
-**source** - path to the main source file, optional. By default is equal to `src/src.sh`
+* **origin** - **required** repository link
+* path - optional, dir name for bash dep, By default is equal to `DEP` as a part of your `DEP-env.sh` file name
+* source - optional, path to the main source file, `src/src.sh` by default
 
 Examples:
-* [origin/EXAMPLE-env.sh](origin/EXAMPLE-env.sh) 
-* [origin/EXAMPLE-2-env.sh](origin/EXAMPLE-2-env.sh) 
-* [origin/EXAMPLE-3-env.sh](origin/EXAMPLE-3-env.sh) 
+* [origin/DEP-env.sh](origin/DEP-env.sh) - use by default if you run add.sh without arg
+* [origin/DEP-2-env.sh](origin/DEP-2-env.sh) 
+* [origin/DEP-3-env.sh](origin/DEP-3-env.sh) 
 
-### Set up add-EXAMPLE.sh ###
-
-file content
-
-```
-#!/usr/bin/env bash
-
-export self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
-
-source "${self_dir}/src.sh"
-
-bg_add "${self_dir}/origin/EXAMPLE-env.sh" 
+### run add.sh ###
 
 ```
 
-1. modify the last line if needed
-1. rename `add-EXAMPLE.sh` into something if needed
+./bash-dep/add.sh ${abs-path-to-your-DEP-env.sh}
 
+``` 
+see post-instruction in the output
 
-### run add-EXAMPLE.sh ###
+These ones
+
+```
+include these lines
+
+self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
+source ${self_dir}/bash-dep/dep/${DEP}/src/src.sh
+
+```
+
+${DEP} - is your dep name
+
 
 #### multiple deps ####
 
-You can include more then once line `env.sh` and call for `bg_add` also more then once
 
 ```
 
-bg_add "${self_dir}/origin/EXAMPLE-env.sh" 
-bg_add "${self_dir}/origin/EXAMPLE--2-env.sh" 
+./bash-dep/add.sh ${abs-path-to-your-DEP-env.sh}
+./bash-dep/add.sh ${abs-path-to-your-OTHER-DEP-env.sh}
 
 ```
 
