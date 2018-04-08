@@ -1,1 +1,3 @@
 origin/*/*
+dep/*
+!dep/.gitkeep
