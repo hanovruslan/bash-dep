@@ -6,7 +6,7 @@ bd_git_prepare () {
 }
 bd_checkout () {
     [ ! -z "${version:=$(git tag -l|grep -P "^\d+\.\d+\.\d+$"|tail -n 1)}" ] \
-    && git checkout tags/${version} -b current 
+    && git checkout tags/${version} -b current
 }
 bd_failed () {
     echo stable version not found >&2
@@ -30,7 +30,7 @@ bg_add () {
     export path="dep/$(bg_get_path ${path})"
     export origin # must be in the path
     export source='${self_dir}/'$(basename ${self_dir})/${path}/${source:-"src/src.sh"}
-    bg_do_add "${origin}" "${path}" "${source}" \ 
+    bg_do_add "${origin}" "${path}" "${source}" \
     )
 }
 bg_get_path () {
@@ -57,6 +57,6 @@ bg_hint() {
     && echo 'include these lines' \
     && echo \
     && echo 'self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"' \
-    && echo source ${source} \
+    && echo 'source "'${source}'"' \
     && echo
 }
