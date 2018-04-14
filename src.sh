@@ -51,7 +51,7 @@ bg_do_add () {
     && bg_hint ${source} \
     )
 }
-bg_hint() {
+type bg_hint 1>/dev/null 2>&1 || bg_hint () {
     local source=${1}
     echo \
     && echo 'include these lines' \
