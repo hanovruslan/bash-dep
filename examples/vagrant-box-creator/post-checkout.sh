@@ -2,12 +2,10 @@
 
 self_dir="$(dirname $(readlink -f ${BASH_SOURCE[0]}))"
 
-# git clone git@github.com:hanovruslan/bash-dep.git "${PWD}/bash-dep"
+git clone git@github.com:hanovruslan/bash-dep.git "${PWD}/bash-dep"
 
 bg_hint () {
   echo -e "\n\nrun ${PWD}/bash-dep/dep/vagrant-box-creator/src/src-external.sh \${machine_name} \${path_to_dir_with_vagrantfile} \${vagrantfile_name}\n\n"
 }
 
-bg_hint
-
-# . ./bash-dep/add.sh "${self_dir}/vagrant-box-creator-env.sh"
+. ./bash-dep/add.sh "${self_dir}/vagrant-box-creator-env.sh"
